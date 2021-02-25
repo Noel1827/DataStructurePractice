@@ -57,11 +57,20 @@ public class Array {
     public Array intersect(Array other){
         // find the items that are common in both arrays and insert them at the return array
         Array returnArray = new Array(0); //maybe error since it has no parameter
-        for(int x: items){
+        for(int x: this.items){
             if(other.indexOf(x) >=0)
             returnArray.insert(x);
         }
         return returnArray;
+    }
+
+    public void reverse(){
+    // try your loop, if it does not work, try separately
+    for(int i = 0; i<count/2; i++){
+        int temp = items[i];
+        items[i] = items[count-1-i];
+        items[count-1-i] = temp;
+    }
     }
 
     
