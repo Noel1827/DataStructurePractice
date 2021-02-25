@@ -22,13 +22,14 @@ public class Array {
             items = newItems;
         }
         items[count++]= item;
+        
     }
 
     public void removeAt(int index){
         if(index >= count || index <0)
         throw new IllegalArgumentException("Index out of bounds");
 
-        for(int i= index; i < count; i++){
+        for(int i= index; i < count-1; i++){
             items[i] = items[i+1];
         }
         count--;
