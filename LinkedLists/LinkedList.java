@@ -67,11 +67,31 @@ public void addLast(int item){
                 current = current.next;
             }
             last = current;
-            
+            last.next = null;
+
         }
     }
     // contains
-    // indexOf
+    public boolean contains(int x){
+        Node temp = first;
+        while(temp != null){
+            if(temp.value == x)
+            return true;
+            temp = temp.next;
+        }
+        return false;
+    }
+    // indexOf\
+
+    public int indexOf(int x){
+        Node temp = first;
+        for(int i = 0; i <= x; i++){
+         if(temp.value ==x)
+         return i;
+         temp = temp.next;
+        }
+        return 0;
+    }
 
     public void print(){
         Node temp = first;

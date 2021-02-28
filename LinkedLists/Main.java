@@ -1,8 +1,12 @@
-import java.util.Arrays;
-import java.util.LinkedList;
+
 public class Main {
     public static void main(String args[]){
-     
-        
+     LinkedList l = new LinkedList();
+        l.addFirst(9);
+        l.addFirst(2);
+        l.addLast(10);
+      System.out.println("the index value is" + l.indexOf(2));
+        l.print();
     }
 }
+ 
