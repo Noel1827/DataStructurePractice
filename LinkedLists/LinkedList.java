@@ -117,18 +117,19 @@ public class LinkedList {
     }
 
 
-    public void reverse(){
-     var previous = first;
-     var current = first.next;
+    public void reverse() {
+        if(isEmpty())return;
+        var previous = first;
+        var current = first.next;
 
-     while(current != null){
-        var next = current.next;
-        current.next = previous;
-        previous = current;
-        current = next;
-     } 
-     last = first;
-     last.next = null;
-     first = previous;  
-     }
+        while (current != null) {
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        last = first;
+        last.next = null;
+        first = previous;
+    }
 }
