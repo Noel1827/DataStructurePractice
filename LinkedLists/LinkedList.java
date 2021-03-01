@@ -1,5 +1,6 @@
 import java.util.NoSuchElementException;
 
+
 public class LinkedList{
     private class Node{
         private int value;
@@ -24,7 +25,7 @@ public class LinkedList{
         size++;
     }
 
-    public void addFist(int item){
+    public void addFirst(int item){
         var node = new Node(item);
 
         if(isEmpty())
@@ -94,6 +95,13 @@ public class LinkedList{
         return size;
     }
 
+    public void print() {
+        var current = first;
+        while (current != null) {
+System.out.println(current.value);
+current=current.next;
+        }
+    }
 public int[] toArray(){
     int[] array = new int[size];
     var current = first;
@@ -103,5 +111,19 @@ public int[] toArray(){
         current = current.next;
     }
     return array;
+}
+public void reverse(Node previous, Node current){
+    if(current.next == last){
+        last.next = current;
+        current.next = previous;
+    }else{
+        reverse(previous.next, current.next);
+        current.next = previous;
+    }
+}
+
+public void reverse(){
+reverse(first, first.next);
+
 }
 }
