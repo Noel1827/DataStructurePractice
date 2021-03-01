@@ -1,104 +1,107 @@
-public class LinkedList {
-    private Node first;
-    private Node last;
-    private int size;
+import java.util.NoSuchElementException;
 
+public class LinkedList{
     private class Node{
         private int value;
         private Node next;
 
-        public Node(int x){
-            this.value=x;
+        public Node(int value){
+            this.value = value;
         }
     }
-    public boolean isEmpty(){return first==null;}
+    private Node first;
+    private Node last;
+    private int size;
 
-    // addFirst
-
-    public void addFirst(int item){
-        Node node = new Node(item);
+    public void addLast(int item){
+        var node = new Node(item);
         if(isEmpty())
         first = last = node;
         else {
-            node.next=first;
-            first=node;
+            last.next = node;
+            last = node;
         }
         size++;
     }
-    // addLast
-public void addLast(int item){
-    Node node = new Node(item);
 
-    if(isEmpty())
-    first = last = node;
-    else{
-        last.next=node;
-        last = node;
-    }
-    size++;
-}
-    // deleteFirst
-    public void deleteFirst(){
+    public void addFist(int item){
+        var node = new Node(item);
 
         if(isEmpty())
-        throw new IllegalArgumentException();
-
-        if(first == last)
-            first = last = null;
-            else{
-                Node second = first.next;
-                first.next = null;
-                first = second;
-            }
-            size--;
-    }
-    // deleteLast
-
-    public void deleteLast(){
-        if (isEmpty()) {
-            throw new IllegalArgumentException();
+        first = last = node;
+        else{
+            node.next = first;
+            first = node;
         }
+        size++;
+    }
+
+    private boolean isEmpty(){
+        return first == null;
+    }
+
+    public int indexOf(int item){
+        int index = 0;
+        var current = first;
+        while(current != null){
+            if(current.value == item)return index;
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
+
+    public boolean contains(int item){
+       return indexOf(item) != -1;
+    }
+
+    public void deleteFirst(){
+        if(isEmpty())
+        throw new NoSuchElementException();
+
+      if (first == last) {
+        first = last = null;
+    } else {
+        var second = first.next;
+        first.next = null;
+        first = second;
+    }
+    size--;
+    }
+
+    public void removeLast(){
+
         if (first == last) {
             first = last = null;
-        }else{
-            Node current = first;
-            while(current != null){
-                if(current.next == last)break;
-                current = current.next;
-            }
-            last = current;
+        } else {
+            var previous = getPrevious(last);
+            last = previous;
             last.next = null;
-
         }
-    }
-    // contains
-    public boolean contains(int x){
-        Node temp = first;
-        while(temp != null){
-            if(temp.value == x)
-            return true;
-            temp = temp.next;
-        }
-        return false;
-    }
-    // indexOf\
-
-    public int indexOf(int x){
-        Node temp = first;
-        for(int i = 0; i <= x; i++){
-         if(temp.value ==x)
-         return i;
-         temp = temp.next;
-        }
-        return 0;
+        size--;
     }
 
-    public void print(){
-        Node temp = first;
-     while(temp != null){
-            System.out.println(temp.value);
-            temp=temp.next;
-     }
-        
+    private Node getPrevious(Node node){
+        var current = first;
+        while(current != null){
+            if(current.next == node) return current;
+            current = current.next;
+        }
+        return null;
     }
+
+    public int size(){
+        return size;
+    }
+
+public int[] toArray(){
+    int[] array = new int[size];
+    var current = first;
+    var index = 0;
+    while(current != null){
+        array[index++] = current.value;
+        current = current.next;
+    }
+    return array;
+}
 }
