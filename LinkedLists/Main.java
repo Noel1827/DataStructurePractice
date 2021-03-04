@@ -5,6 +5,9 @@ public class Main {
         l.addLast(9);
         l.addLast(2);
         l.addLast(10);
+        l.addLast(3);
+        l.addLast(70);
+        l.addLast(40);
       l.printMiddle();
         // l.print();
     }
