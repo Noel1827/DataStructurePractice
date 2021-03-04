@@ -5,7 +5,7 @@ public class Main {
         l.addLast(9);
         l.addLast(2);
         l.addLast(10);
-      System.out.println(l.getKthFromTheEnd(10));
+      l.printMiddle();
         // l.print();
     }
 }
