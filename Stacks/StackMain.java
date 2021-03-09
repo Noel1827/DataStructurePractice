@@ -3,7 +3,7 @@ class StackMain{
     public static void main(String args[]){
         String st = "abs";
         StringReverser reverser = new StringReverser();
-        var result = reverser.reverse(st);
+        var result = reverser.reverse(null);
         System.out.println(result);
     }
 }
