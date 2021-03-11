@@ -5,32 +5,39 @@ class StackMain {
         Stack<Character> opens = new Stack<>();
 
         for (char x : input.toCharArray()) {
-            if (x == '(' || x == '[' || x == '<')
+            if (x == '(' || x == '[' || x == '<' || x == '{')
                 opens.push(x);
 
             switch (x) {
                 case ')':
-                    if (opens.peek() != '(')
+                    if (opens.empty() || opens.peek() != '(')
                         return false;
-                    opens.peek();
+                    opens.pop();
                     break;
                 case ']':
-                    if (opens.peek() != '[')
+                    if (opens.empty() || opens.peek() != '[')
                         return false;
-                    opens.peek();
+                    opens.pop();
                     break;
                 case '>':
-                    if (opens.peek() != '>')
+                    if (opens.empty() || opens.peek() != '>')
                         return false;
-                    opens.peek();
+                    opens.pop();
                     break;
+                case '}':
+                    if (opens.empty() || opens.peek() != '{')
+                        return false;
+                    opens.pop();
+                    break;
+
             }
             // if (x == ')' || x == ']' || x == '>') {
             // if (opens.peek() == x)
             // opens.pop();
             // }
         }
-        return true;
+
+        return opens.empty();
 
     }
 
@@ -39,6 +46,6 @@ class StackMain {
         // StringReverser reverser = new StringReverser();
         // var result = reverser.reverse(null);
         // System.out.println(result);
-        System.out.println(balanced("[>]"));
+        System.out.println(balanced(")1+2"));
     }
 }
