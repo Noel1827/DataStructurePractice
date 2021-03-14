@@ -165,4 +165,15 @@ public class LinkedList {
        }else System.out.println(a.value + " " + a.next.value);
     }
 
+    public boolean hasLoop(){
+        Node a,b;
+        a=b=first;
+        while(a!=null ){
+            a=a.next;
+            b=b.next;
+            if(a==b)
+            return true;
+        }
+        return false;
+    }
 }

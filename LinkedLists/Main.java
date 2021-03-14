@@ -2,6 +2,7 @@
 public class Main {
     public static void main(String args[]){
      LinkedList l = new LinkedList();
+     var list = LinkedList.createWithLoop();
         l.addLast(9);
         l.addLast(2);
         l.addLast(10);
