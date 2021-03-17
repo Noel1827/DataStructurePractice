@@ -1,4 +1,4 @@
-import java.util.ArrayDeque;
+
 import java.util.*;
 class QueuesMain{
     public static void main(String args[]){
@@ -16,7 +16,8 @@ class QueuesMain{
         test.enqueue(0);
         test.enqueue(4);
         test.enqueue(1);
-        System.out.println(test);
+        test.enqueue(1);
+        System.out.println(test.isFull());
         test.dequeue();
         System.out.println(test);
     }

@@ -5,7 +5,7 @@ public class ArrayQueue {
     int front=0, end=0;
 
     public void enqueue(int number){
-        if(end == items.length)
+        if(isFull())
         throw new StackOverflowError();
         items[end++] = number;
     }
@@ -21,6 +21,9 @@ public class ArrayQueue {
 
     public boolean isEmpty(){
         return front == end;
+    }
+    public boolean isFull(){
+        return end == items.length;
     }
 
     @Override
