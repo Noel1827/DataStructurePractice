@@ -1,8 +1,12 @@
 import java.util.Arrays;
 
 public class ArrayQueue {
-    int[] items = new int[5];
+    int[] items;
     int front=0, end=0;
+
+    public ArrayQueue(int capacity){
+        items = new int[capacity];
+    }
 
     public void enqueue(int number){
         if(isFull())
