@@ -27,7 +27,7 @@ public class ArrayQueue {
         return front == end;
     }
     public boolean isFull(){
-        return end == items.length;
+        return end-1 == items.length;
     }
 
     @Override
