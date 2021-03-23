@@ -1,39 +1,42 @@
 import java.util.Arrays;
 
 public class ArrayQueue {
-    int[] items;
-    int front=0, end=0;
+  int[] items;
+  int rear, count, front;
 
-    public ArrayQueue(int capacity){
-        items = new int[capacity];
-    }
+  public ArrayQueue(int capacity) {
+    items = new int[capacity];
+  }
 
-    public void enqueue(int number){
-        if(isFull())
-        throw new StackOverflowError();
-        items[end++] = number;
-    }
+  public void enqueue(int item) {
+    if (count == items.length)
+      throw new IllegalStateException();
+    items[rear] = item;
+    rear = (rear + 1) % items.length;
+    count++;
+  }
 
-    public int dequeue(){
+  public int dequeue() {
+    var item = items[front];
+    items[front] = 0;
+    front = (front + 1) % items.length;
+    count--;
+    return item;
+  }
 
-        return items[front++];
-    }
+  @Override
+  public String toString() {
+    return Arrays.toString(items);
 
-    public int peek(){
-        return items[end-1];
-    }
+  }
 
-    public boolean isEmpty(){
-        return front == end;
-    }
-    public boolean isFull(){
-        return end-1 == items.length;
-    }
+  public boolean isFull(){
+    return count == items.length;
+  }
 
-    @Override
-    public String toString(){
-        var copy = Arrays.copyOfRange(items, front, end);
-        return Arrays.toString(copy);
-    }
+  public boolean isEmpty(){
+    return count==0;
+  }
 
+  public void 
 }
