@@ -7,10 +7,6 @@ public class PriorityQueue {
     }
 
     public void insert(int number) {
-        if (count == 0) {
-            items[0] = number;
-            count++;
-        } else {
             for (int i = count-1; i >=0; i--) {
                 if (number < items[i]) {
                     items[i + 1] = items[i];
@@ -22,7 +18,7 @@ public class PriorityQueue {
                 }
             }
 
-        }
+        
     }
 
     public void print(){
