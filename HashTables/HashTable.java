@@ -28,34 +28,42 @@ public class HashTable {
         bucket.addLast(new Entry(key, value));
     }
 
+    private Entry getEntry(int key){
+        var bucket = getBucket(key);
+
+        for(var entry: bucket){
+            if(entry.key == key)
+            return entry;
+        }
+        return null;
+    }
+
     private int hash(int key) {
         return key % entries.length;
     }
 
     public String get(int key) {
-        var bucket = entries[hash(key)];
 
-        if (bucket != null) {
-            for (var entry : bucket) {
-                if (key == entry.key)
-                    return entry.value;
-            }
-        }
-        return null;
+        var entry = getEntry(key);
+        return (entry == null)? null:entry.value;
+
+    }
+
+    private LinkedList<Entry> getBucket(int key){
+        return entries[hash(key)];
     }
 
     public void remove(int key) {
-        var bucket = entries[hash(key)];
+        var bucket = getBucket(key);
 
-        if (bucket == null)
-            throw new IllegalStateException();
-
+        if (bucket != null){
         for (var entry : bucket) {
             if (entry.key == key) {
                 bucket.remove(entry);
                 return;
             }
         }
+    }
         throw new IllegalStateException();
     }
 }
