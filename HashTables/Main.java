@@ -4,8 +4,14 @@ class Main {
 
     public static void main(String args[]) {
         // a green apple
-        System.out.println(findFirstNonRepeatingChar("a green apple"));
+        // System.out.println(findFirstNonRepeatingChar("a green apple"));
 
+       HashTable table = new HashTable();
+       table.put(6, "A");
+       table.put(8,"B");
+       table.put(11,"C");
+       table.put(6,"A+");
+      System.out.println(table.get(10));
     }
 
     // public static char findFirstNonRepeatingChar(String str) {

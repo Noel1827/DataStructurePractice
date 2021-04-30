@@ -9,30 +9,23 @@ public class HashTable {
             this.key = key;
             this.value = value;
         }
-
+        
     }
-    private LinkedList<Entry> list = new LinkedList<>();
+    private LinkedList<Entry>[] entries = new LinkedList[5];
     private Entry entry;
 
-    public void put(int k, String value){
-        entry = new Entry(k,value);
-        list.add(entry);
-    }
-
-    public String get(int key){
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).key == key)
-            return list.get(i).value;
+    public void put(int key, String value){
+        var index = hash(key);
+        if(entries[index] == null){
+            entries[index] = new LinkedList<>();
         }
-        return "Not found"; /// FIIIXXXXXXXXXXXX
+        var entry = new Entry(key,value);
+        entries[index].addLast(entry);
+        
     }
 
-    public void remove(int key){
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).key == key)
-            list.remove(list.get(i));
-        }
+    private int hash(int key){
+        return key%entries.length;
     }
 
-    
 }
