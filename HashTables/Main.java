@@ -6,13 +6,17 @@ class Main {
         // a green apple
         // System.out.println(findFirstNonRepeatingChar("a green apple"));
 
-       HashTable table = new HashTable();
-       table.put(6, "A");
-       table.put(8,"B");
-       table.put(11,"C");
-       table.put(6,"A+");
-       table.remove(60);
-      System.out.println(table.get(10));
+    //    HashTable table = new HashTable();
+    //    table.put(6, "A");
+    //    table.put(8,"B");
+    //    table.put(11,"C");
+    //    table.put(6,"A+");
+    //    table.remove(60);
+    //   System.out.println(table.get(10));
+      int[] arr = {1,2,23,4,3,2,2};
+
+      HashTableExercises map = new HashTableExercises();
+      System.out.println(map.mostFrequent(arr));
     }
 
     // public static char findFirstNonRepeatingChar(String str) {
