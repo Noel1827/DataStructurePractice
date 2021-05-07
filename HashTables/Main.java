@@ -16,7 +16,9 @@ class Main {
       int[] arr = {1,2,23,4,3,2,2};
 
       HashTableExercises map = new HashTableExercises();
-      System.out.println(map.mostFrequent(arr));
+      System.out.println(map.TwoSum(arr,0));
+      int[] returned = map.TwoSum(arr,4);
+      System.out.println(returned[0]+" "+ returned[1]);
     }
 
     // public static char findFirstNonRepeatingChar(String str) {
