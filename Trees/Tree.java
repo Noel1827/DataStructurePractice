@@ -52,4 +52,53 @@ class Tree {
         }
         return false;
     }
+
+    public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+
+    private void traversePreOrder(Node root) {
+        if (root == null)
+            return;
+        System.out.println(root.value);
+        traversePreOrder(root.leftchild);
+        traversePreOrder(root.rightchild);
+    }
+
+    public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+
+    private void traverseInOrder(Node root) {
+        if (root == null)
+            return;
+        traversePreOrder(root.leftchild);
+        System.out.println(root.value);
+        traversePreOrder(root.rightchild);
+    }
+
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+
+    private void traversePostOrder(Node root) {
+        if (root == null)
+            return;
+        traversePreOrder(root.leftchild);
+        traversePreOrder(root.rightchild);
+        System.out.println(root.value);
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node root) {
+        if(root == null)
+        return -1;
+        if (root.leftchild == null && root.rightchild == null)
+            return 0;
+
+        return 1 + Math.max(height(root.leftchild), height(root.rightchild));
+    }
 }

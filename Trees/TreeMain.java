@@ -6,6 +6,6 @@ public class TreeMain {
         tree.insert(6);
         tree.insert(99);
         tree.insert(12);
-        System.out.println(tree.find(7));
+        System.out.println(tree.height());
     }
 }
