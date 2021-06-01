@@ -93,12 +93,46 @@ class Tree {
         return height(root);
     }
 
+    private boolean isLeaf(Node node) {
+        return node.leftchild == null && node.rightchild == null;
+    }
+
     private int height(Node root) {
-        if(root == null)
-        return -1;
-        if (root.leftchild == null && root.rightchild == null)
+        if (root == null)
+            return -1;
+        if (isLeaf(root))
             return 0;
 
         return 1 + Math.max(height(root.leftchild), height(root.rightchild));
     }
+
+    public int min() {
+        return min(root);
+    }
+
+    private int min(Node root) {
+        if (isLeaf(root))
+            return root.value;
+        var left = min(root.leftchild);
+        var right = min(root.rightchild);
+        return Math.min(Math.min(left, right), root.value);
+    }
+
+    
+
+    public boolean equals(Tree other) {
+        return equals(root, other.root);
+    }
+
+    private boolean equals(Node first, Node second) {
+        if(first == null && second == null)
+            return true;
+        if(first!= null && second != null)
+            return first.value == second.value 
+            && equals(first.leftchild, second.leftchild)
+            && equals(first.rightchild, second.rightchild);
+
+            return false;
+    }
+
 }
